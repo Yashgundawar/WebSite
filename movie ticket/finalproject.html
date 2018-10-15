@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Movie Ticket Booking</title>
+    <style>
+        h1{
+            background-color: orange;
+            text-color:black;
+            text-align:center;
+            width: 300px;
+            border-radius: 10px;
+
+        }
+
+
+
+        .select-container {
+            margin:20px auto;
+            text-align:center;
+        }
+
+
+        td{
+            background-color:orange;
+        }
+        .marquee{
+            width: 100px;
+            height: 100px;
+            -webkit-transition-duration:0.6s;
+            opacity: 0.6;
+            z-index: 1;
+            margin: 0;
+            position: relative;
+        }
+
+        .marquee:hover{
+            -webkit-transform:scale(1.5);
+            box-shadow: opx opx 20px grey;
+
+            -webkit-box-shadow:opx opx 20px grey;
+            opacity: 1;
+            z-index: 10;
+        }
+
+
+
+
+
+    </style>
+
+    <script src="scripts/angular.js"></script>
+    <script>
+
+        var app=angular.module('DemoApp',[]);
+        app.controller('HomeController',function($scope){
+
+            $scope.City=['Pune','Hyderabad','Mumbai','Baramati','Satara'];
+            lstCity="";
+            lstCinema="";
+            $scope.PuneCinema=['PVR-Hadapsar','INOX-Loni','KARNIVAL-Katraj'];
+            $scope.HyderabadCinema=['KACHIGUDA_MAX-Ameer','SR_MULTIPLEX-Sec','JAY HIND-Namp'];
+            $scope.MumbaiCinema=['SHIV_MULTIPLEX-Dadar','ROBOT_MAX-Chem','SATYAM_ CINEMA-Thane'];
+            $scope.BaramatiCinema=['KARNIVAL_SahyogSocity','DURGA_Suryanagari','TARA_PencilChowk'];
+            $scope.SataraCinema=['VAIBHAV_THEAOTER-Koregao','SHAHOO CINEMA_Ajinkyatara','OM MULTI-Koregav'];
+
+
+
+            $scope.lstCity="";
+            $scope.lstCinema="";
+            $scope.lstMovie="";
+            $scope.lstShow="";
+            $scope.lstSeats="";
+            $scope.lstClass="";
+
+            $scope.TicketDetails=false;
+            $scope.TicketBooking=true;
+
+            $scope.Booking=function(){
+
+                $scope.TicketDetails=true;
+                $scope.TicketBooking=false;
+
+
+
+                switch($scope.lstClass) {
+
+
+
+                    case  'Gold/500':
+                        $scope.totalAmount = $scope.lstSeats *500;
+                        break;
+                    case 'Silver-rs400':
+                        $scope.totalAmount = $scope.lstSeats *400;
+                        break;
+                    case  'Platinum-rs200':
+                        $scope.totalAmount = $scope.lstSeats * 200;
+                        break;
+                    case  'Free-rs0':
+                        $scope.totalAmount = $scope.lstSeats *00;
+                        break;
+
+                }}
+
+            $scope.SelectCity=function () {
+
+                switch ($scope.lstCity) {
+
+                    case"Pune":
+                        $scope.Cinema = $scope.PuneCinema;
+                        break;
+                    case"Hyderabad":
+                        $scope.Cinema = $scope.HyderabadCinema;
+                        break;
+                    case"Mumbai":
+                        $scope.Cinema = $scope.MumbaiCinema;
+                        break;
+                    case"Baramati":
+                        $scope.Cinema = $scope.BaramatiCinema;
+                        break;
+                    case"Satara":
+                        $scope.Cinema = $scope.SataraCinema;
+                        break;
+
+                }
+
+            }
+
+
+            $scope.lstMovie="";
+            $scope.lstShow="";
+
+            $scope.PVR=['Gold','Race3','Satymev Jayte'];
+            $scope.INOX=['Sanam Re','Kick','Dhadak'];
+            $scope.KARNIVAL=['Padman','Rustom','Airlift'];
+            $scope.MAXAmeer=['Bunny The Perfect Gentalmen','Yevadu','Arya'];
+            $scope.SR_MULTIPLEX=['En Peyar surya','Duvvda Jagannadham','Dangerous Janbaz'];
+            $scope.HIND_Namp=['Rangastalam','Ram ki Jung','Maghdheera'];
+            $scope.MULTIPLEX_Dadar=['Raid','Bajirao-Mastani','Befikre'];
+            $scope.MAX_Chem=['Gunde','Ram-Lela','Padmavt'];
+            $scope.SATYAM_CINEMA=['Singham return','Drishyam','Golmal-Return'];
+            $scope.KARNIVAL_SahyogSocity=['Furzand','Mi Shivaji Raje Bhosale Boltoy','Natsmrat'];
+            $scope.DURGA_Suryanagari=['Fandry','Mitwa','Tu Hi Re'];
+            $scope.TARA_PencilChowk=['DuniyaDari','Mauli', 'Raja Shiv Chattrapati'];
+            $scope.VAIBHAV_THEAOTER=['Sairat','Pak Pak pakak','Deul'];
+            $scope.CINEMA_Ajinkyatara=['Dangal','Gajini','Razi'];
+            $scope.MULTI_Koregav=['Bhagi2','Force','Shoot at Lokhandwala'];
+
+
+
+
+            $scope.SelectCinema=function () {
+
+                switch ($scope.lstCinema) {
+
+                    case"PVR-Hadapsar":
+                        $scope.Movie = $scope.PVR;
+                        break;
+                    case"INOX-Loni":
+                        $scope.Movie = $scope.INOX;
+                        break;
+                    case"KARNIVAL-Katraj":
+                        $scope.Movie = $scope.KARNIVAL;
+                        break;
+                    case"KACHIGUDA_MAX-Ameer":
+                        $scope.Movie = $scope.MAXAmeer;
+                        break;
+                    case"SR_MULTIPLEX-Sec":
+                        $scope.Movie = $scope.SR_MULTIPLEX;
+                        break;
+                    case"JAY HIND-Namp":
+                        $scope.Movie = $scope.HIND_Namp;
+                        break;
+                    case"SHIV_MULTIPLEX-Dadar":
+                        $scope.Movie = $scope.MULTIPLEX_Dadar;
+                        break;
+                    case"ROBOT_MAX-Chem":
+                        $scope.Movie = $scope.MAX_Chem;
+                        break;
+
+                    case"SATYAM_ CINEMA-Thane":
+                        $scope.Movie = $scope.SATYAM_CINEMA;
+                        break;
+
+                    case"KARNIVAL_SahyogSocity":
+                        $scope.Movie = $scope.KARNIVAL_SahyogSocity;
+                        break;
+                    case"DURGA_Suryanagari":
+                        $scope.Movie = $scope.DURGA_Suryanagari;
+                        break;
+                    case"TARA_PencilChowk":
+                        $scope.Movie = $scope.TARA_PencilChowk;
+                        break;
+                    case"VAIBHAV_THEAOTER-Koregao":
+                        $scope.Movie = $scope.VAIBHAV_THEAOTER;
+                        break;
+                    case"SHAHOO CINEMA_Ajinkyatara":
+                        $scope.Movie = $scope.CINEMA_Ajinkyatara;
+                        break;
+                    case"OM MULTI-Koregav":
+                        $scope.Movie = $scope.MULTI_Koregav;
+                        break;
+                }
+
+            }
+
+
+
+            $scope.MoviePostrs=[
+                {photo:"Images/gold.jpg"},
+                {photo:"Images/satymev.jpg"},
+                {photo:"Images/race3.jpg"},
+                {photo:"Images/sanamre.jpg"},
+                {photo:"Images/kick.jpg"},
+                {photo:"Images/dhadak.jpg"},
+                {photo:"Images/padman1.jpg"},
+                {photo:"Images/rustom.jpg"},
+                {photo:"Images/airlift.jpg"},
+                {photo:"Images/bunny.jpg"},
+                {photo:"Images/arya.jpg"},
+                {photo:"Images/yevdu.jpg"},
+                {photo:"Images/en peyar surya.jpg"},
+                {photo:"Images/DJ.jpg"},
+                {photo:"Images/dkhiladi.jpg"},
+                {photo:"Images/ranghastalm.jpg"},
+                {photo:"Images/ramkijung.jpg"},
+                {photo:"Images/Magadheera.jpg"},
+                {photo:"Images/raid.jpg"},
+                {photo:"Images/bajirao.jpg"},
+                {photo:"Images/befikre.jpg"},
+                {photo:"Images/gunde.jpg"},
+                {photo:"Images/ramleela.jpg"},
+                {photo:"Images/padmavt.jpg"},
+                {photo:"Images/singham returns.jpg"},
+                {photo:"Images/golmalreturns.jpg"},
+                {photo:"Images/Drishyam.jpg"},
+                {photo:"Images/furzand.jpg"},
+                {photo:"Images/mi shivaji.jpg"},
+                {photo:"Images/nt.jpg"},
+                {photo:"Images/fandry.jpg"},
+                {photo:"Images/mitwa.jpg"},
+                {photo:"Images/tu.jpg"},
+                {photo:"Images/duniyadari.jpg"},
+                {photo:"Images/laybhari.jpg"},
+                {photo:"Images/raje.jpg"},
+                {photo:"Images/sairat.jpg"},
+                {photo:"Images/pkpkpakak.jpg"},
+                {photo:"Images/deul.jpg"},
+                {photo:"Images/dangal.jpg"},
+                {photo:"Images/gajini.jpg"},
+                {photo:"Images/razi.jpg"},
+                {photo:"Images/bhagi2.jpg"},
+                {photo:"Images/force.jpg"},
+                {photo:"Images/shootat.jpg"}];
+
+
+
+
+            $scope.photo="";
+
+            function ShowDetails(index){
+                $scope.photo=$scope.MoviePostrs[index].photo;
+
+
+            }
+            $scope.Timing=["Choose Show Timing", "10:00 AM", "04:00 PM", "07:00 PM", "10:00 PM"];
+            $scope.lstShow="";
+            $scope.lstMovie="";
+
+
+
+            $scope.SelectMovie=function(){
+                switch($scope.lstMovie){
+
+                    case"Gold":
+                        ShowDetails(0);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Satymev Jayte":
+                        ShowDetails(1);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Race3":
+                        ShowDetails(2);
+                        $scope.Show=$scope.Timing;
+                        break;
+
+                    case"Sanam Re":
+                        ShowDetails(3);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Kick":
+                        ShowDetails(4);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Dhadak":
+                        ShowDetails(5);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Padman":
+                        ShowDetails(6);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Rustom":
+                        ShowDetails(7);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Airlift":
+                        ShowDetails(8);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Bunny The Perfect Gentalmen":
+                        ShowDetails(9);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Arya":
+                        ShowDetails(10);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Yevadu":
+                        ShowDetails(11);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"En Peyar surya":
+                        ShowDetails(12);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Duvvda Jagannadham":
+                        ShowDetails(13);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Dangerous Janbaz":
+                        ShowDetails(14);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Rangastalam":
+                        ShowDetails(15);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Ram ki Jung":
+                        ShowDetails(16);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Maghdheera":
+                        ShowDetails(17);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Raid":
+                        ShowDetails(18);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Bajirao-Mastani":
+                        ShowDetails(19);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Befikre":
+                        ShowDetails(20);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Gunde":
+                        ShowDetails(21);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Ram-Lela":
+                        ShowDetails(22);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Padmavt":
+                        ShowDetails(23);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Singham return":
+                        ShowDetails(24);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Golmal-Return":
+                        ShowDetails(25);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Drishyam":
+                        ShowDetails(26);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Furzand":
+                        ShowDetails(27);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Mi Shivaji Raje Bhosale Boltoy":
+                        ShowDetails(28);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Natsmrat":
+                        ShowDetails(29);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Fandry":
+                        ShowDetails(30);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Mitwa":
+                        ShowDetails(31);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Tu Hi Re":
+                        ShowDetails(32);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"DuniyaDari":
+                        ShowDetails(33);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Mauli":
+                        ShowDetails(34);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Raja Shiv Chattrapati":
+                        ShowDetails(35);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Sairat":
+                        ShowDetails(36);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Pak Pak pakak":
+                        ShowDetails(37);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Deul":
+                        ShowDetails(38);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Dangal":
+                        ShowDetails(39);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Gajini":
+                        ShowDetails(40);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Razi":
+                        ShowDetails(41);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Bhagi2":
+                        ShowDetails(42);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Force":
+                        ShowDetails(43);
+                        $scope.Show=$scope.Timing;
+                        break;
+                    case"Shoot at Lokhandwala":
+                        ShowDetails(44);
+                        $scope.Show=$scope.Timing;
+                        break;
+                }
+            }
+
+
+
+            $scope.lstSeats="";
+            $scope.lstShow="";
+
+            $scope.AvailableSeats=[1,2,3,4,5,6,7,8,9,10];
+
+
+
+
+            $scope.SelectShow=function(){
+
+                switch($scope.lstShow)
+                {
+                    case"10:00 AM":
+                        $scope.Seats=$scope.AvailableSeats;
+
+
+                    case"04:00 PM":
+                        $scope.Seats=$scope.AvailableSeats;
+
+
+                    case"10:00 PM":
+                        $scope.Seats=$scope.AvailableSeats;
+
+
+                    case"07:00 PM":
+                        $scope.Seats=$scope.AvailableSeats;
+                }
+            }
+
+
+            $scope.lstClass="";
+            $scope.lstShow="";
+            $scope.SeatsQuality=['Gold/500','Silver-rs400','Platinum-rs200','Free-rs0'];
+            $scope.SelectSeats=function() {
+
+                switch ($scope.lstSeats) {
+                    case 1:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 2:
+                        $scope.Class = $scope.SeatsQuality
+                    case 3:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 4:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 5:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 6:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 7:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 8:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 9:
+                        $scope.Class = $scope.SeatsQuality
+
+                    case 10:
+                        $scope.Class = $scope.SeatsQuality
+
+                }
+
+            }
+
+
+
+        });
+    </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+
+
+
+    <div class="select-container">
+        <table border="1">
+
+            <div ng-show="TicketBooking" align="center">
+                <h1>SELECT MOVIE</h1>
+
+            <col width="200px" />
+            <col width="300px" />
+            <col width="200px" />
+            <col width="300px" />
+            <tr>
+                <td>Select City</td>
+
+   <td> <select ng-options="item for item in City" ng-model="lstCity" ng-change="SelectCity()">
+   </select></td>
+    <td>Select Theotor Name</td>
+                <td> <select ng-options="item for item in Cinema" ng-model="lstCinema" ng-change="SelectCinema()"> </select></td></tr>
+           <tr>
+                <td>Select Movie</td>
+                <td><select ng-options="item for item in Movie" ng-model="lstMovie" ng-change="SelectMovie()"> </select></td>
+
+                <td>Select Show-Time</td>
+                <td> <select ng-options="item for item in Show" ng-model="lstShow" ng-change="SelectShow()"> </select></td></tr>
+
+            <tr>
+                <td>Select No.Of Seats</td>
+                <td> <select ng-options="item for item in Seats" ng-model="lstSeats" ng-change="SelectSeats()"></select></td>
+
+                <td>Select Class</td>
+                <td> <select ng-options="item for item in Class" ng-model="lstClass" ng-change="SelectClass()"></select></td></tr>
+
+
+
+
+            <tr>
+                <td colspan="2">
+                    <img src="Images/inox4.gif" ng-src="{{photo}}" width="500" height="300" >
+                </td>
+                <td colspan="2"  class="marquee">
+                    <h4>Coming Soon</h4>
+                    <marquee>
+                    <img src="Images/robot2.jpg"  width="500" height="300" >
+                        <img src="Images/tanaji.jpg"  width="500" height="300" >
+                        <img src="Images/cycle.jpg"  width="500" height="300" >
+                        <img src="Images/bhart.jpg"  width="500" height="300" >
+                        <img src="Images/bhai.jpg"  width="500" height="300" >
+                        <img src="Images/sarkar.jpg"  width="500" height="300" >
+                        <img src="Images/tanaji2.jpg"  width="500" height="300" >
+                        <img src="Images/baza.jpg"  width="500" height="300" >
+                        <img src="Images/sweeti.jpg"  width="500" height="300" >
+                        <img src="Images/simba.jpg"  width="500" height="300" >
+                        <img src="Images/panipt.jpg"  width="500" height="300" >
+
+                    </marquee>
+                </td>
+
+            </tr>
+
+
+
+</tr>
+        </table>
+    </div>
+    <div align="center"> <button ng-click="Booking()"> BOOK TICKET</button></div>
+
+    <div ng-show="TicketDetails">
+    <h1>Booking Summry</h1>
+    <img ng-src="{{photo}}" width="300" height="200">
+
+    <table>
+        <tr>
+            <td>City:</td><td>{{lstCity}}</td>
+        </tr>
+        <tr>
+            <td>Cinema:</td><td>{{lstCinema}}</td>
+        </tr>
+        <tr>
+            <td>Movie:</td><td>{{lstMovie}}</td>
+        </tr>
+        <tr>
+            <td>Show Time:</td><td>{{lstShow}}</td>
+        </tr>
+        <tr>
+            <td>Seats:</td><td>{{lstSeats}}</td>
+        </tr>
+        <tr>
+            <td>Class:</td><td>{{lstClass}}</td>
+        </tr>
+        <tr>
+            <td>Total:</td><td>{{totalAmount|currency:'&#8377':2}}</td>
+        </tr>
+
+    </table><br><br>
+    <input type="button" value="print bill" onclick="window.print()">
+</div>
+
+
+</body>
+</html>
