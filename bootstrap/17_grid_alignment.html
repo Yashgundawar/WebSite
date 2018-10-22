@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap/css/fontawesome-all.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/mdb.css">
+    <link rel="stylesheet" href="bootstrap/css/style.css">
+    <title>Grid Alignment in Bootstrap4</title>
+    <style>
+        .row{
+            height:200px;
+            border:2px solid orangered;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Grid Alignment in Bootstrap4</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
+<div class="container mt-5">
+    <!--########################START HERE#########################-->
+
+    <!-- VERTICAL ALIGNMENT align-items-start-->
+
+    <div class="container">
+        <h2>top aligned</h2>
+        <div class="row align-items-start">
+            <div class="col">
+                <p class="bg-success text-white text-center p-2">top aligned text</p>
+
+            </div>
+            <div class="col">
+                <p class="bg-success text-white text-center p-2">top alignes text</p>
+
+            </div>
+            <div class="col">
+                <p class="bg-success text-white text-center p-2">top aligned text</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h2>middle aligneds</h2>
+    <div class="row align-items-center">
+        <div class="col">
+            <p class="bg-primary text-white text-center p-2">middle aligned text</p>
+
+        </div>
+        <div class="col">
+            <p class="bg-primary text-white text-center p-2">middle aligned</p>
+
+        </div>
+        <div class="col">
+            <p class="bg-primary text-white text-center p-2">middle aligned text</p>
+
+        </div>
+
+    </div>
+    <h2>bottom aligneds</h2>
+    <div class="row align-items-end">
+        <div class="col">
+            <p class="bg-primary text-white text-center  p-2">middle aligned text</p>
+
+        </div>
+
+        <div class="col">
+            <p class="bg-primary text-white text-center p-2">middle aligned</p>
+
+        </div>
+        <div class="col">
+            <p class="bg-primary text-white text-center p-2">middle aligned text</p>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h2>align individual cols</h2>
+        <div class="row">
+            <div class="col align-self-start">
+                <p class="bg-primary text-white text-center p-2">top aligneds</p>
+
+            </div>
+            <div class="col align-self-center">
+                <p class="bg-success text-center text-white p-2">middle aligned</p>
+
+            </div>
+            <div class="col align-self-end">
+                <p class="bg-teal text-white text-center p-2">bottom aligned</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div style="margin-top:500px;"></div>
+
+<!-- BODY ENDS -->
+<script src="bootstrap/js/fontawesome-all.js"></script>
+<script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap/js/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/mdb.min.js"></script>
+</body>
+</html>
